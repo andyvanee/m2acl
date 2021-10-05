@@ -10,9 +10,9 @@ const acl = new M2ACL({
  * non-admin users
  */
 acl.permission("read:account", async ctx => {
-    const { user, properties } = ctx
+    const { role, properties } = ctx
     // Admin users can view everything
-    if (user.role == "admin") return properties
+    if (role == "admin") return properties
 
     // Other users cannot view password_hash
     return (({ password_hash, ...props }) => props)(properties)
