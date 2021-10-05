@@ -1,17 +1,4 @@
-# M2ACL - Flexible Access Control Library
-
-### Install
-
-    yarn add m2acl
-
-or
-
-    npm i m2acl
-
-### Basic example
-
-```javascript
-import M2ACL from "m2acl"
+import M2ACL from "./src/index.js"
 
 // Create new ACL object with given actions
 const acl = new M2ACL({
@@ -51,17 +38,3 @@ const user = {
     permit2.properties // => null
     console.log({ permit2 })
 })()
-```
-
-For more detailed examples see the spec files in `spec/*.spec.js`
-
--   [Custom Permissions](./spec/custom.spec.js)
--   [Wildcard Permissions](./spec/wildcard.spec.js)
-
-### Development
-
-    # install dependencies
-    yarn
-
-    # run specs
-    yarn spec

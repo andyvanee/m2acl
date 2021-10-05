@@ -17,7 +17,7 @@ export const spec = async () => {
     const subject = {
         resource: "video",
         action: "create",
-        data: {
+        properties: {
             id: 1,
             owner_id: 998,
             url: "123-abc"

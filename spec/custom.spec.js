@@ -13,14 +13,14 @@ acl.permission("read", async ctx => {
     // First check that this is a read request
     if (!(await hasAction("read")(ctx))) return false
 
-    const { user, data } = ctx
+    const { user, properties } = ctx
 
     // Admin users can view everything
-    if (user.role == "admin") return data
+    if (user.role == "admin") return properties
 
-    // Check some condition of the given user and data
+    // Check some condition of the given user and properties
     if (!user.example__id) return false
-    if (user.example__id == data.owner___example__id) return data
+    if (user.example__id == properties.owner___example__id) return properties
 
     return false
 })
@@ -32,7 +32,7 @@ export const spec = async () => {
     const subject = {
         resource: "video",
         action: "read",
-        data: {
+        properties: {
             id: 1,
             owner___example__id: 1,
             url: "123-abc"

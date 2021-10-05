@@ -7,7 +7,7 @@
  * @typedef {Object} ResourceOp A resource operation to be verified
  * @property {string} action The operation to be completed on the resource
  * @property {string} resource The type of the resource
- * @property {any} data The resource data
+ * @property {any} properties The resource properties
  */
 
 import { hasAction } from "./permissions/hasAction.js"
@@ -53,7 +53,7 @@ export class M2ACL {
      * @param {ResourceOp|Object} resourceOp resource operation
      * @returns
      */
-    async verify({ role, ...extra }, { resource, action, data }) {
+    async verify({ role, ...extra }, { resource, action, properties }) {
         if (typeof role == "string") {
             role = [role]
         }
@@ -74,7 +74,7 @@ export class M2ACL {
                     role: r,
                     user,
                     resource,
-                    data
+                    properties
                 })
                 try {
                     const pres = await pfn(ctx)

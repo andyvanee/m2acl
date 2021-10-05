@@ -1,13 +1,15 @@
 export const hasAction = forAction => {
     return async ctx => {
-        const { user, data, own } = ctx
+        const { user, action, properties, own } = ctx
+
+        if (action !== forAction) return false
 
         if (own) {
-            const dataUid = data.owner_id
+            const propertiesUid = properties.owner_id
             const userUid = user.id
-            if (!(dataUid && userUid)) return false
-            if (dataUid !== userUid) return false
+            if (!(propertiesUid && userUid)) return false
+            if (propertiesUid !== userUid) return false
         }
-        return data
+        return properties
     }
 }
