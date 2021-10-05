@@ -54,13 +54,14 @@ export class M2ACL {
      * @returns
      */
     async verify({ role, ...extra }, { resource, action, properties }) {
-        if (typeof role == "string") {
-            role = [role]
-        }
+        if (!role) role = []
+        if (typeof role == "string") role = [role]
+
         const status = {
             granted: false,
             properties: {}
         }
+
         for (const r of role) {
             for (const p of this.#permissions) {
                 const [pfn, prole, paction, pargs] = p
