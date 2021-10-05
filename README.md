@@ -57,6 +57,15 @@ For more detailed examples see the spec files in `spec/*.spec.js`
 
 -   [Custom Permissions](./spec/custom.spec.js)
 -   [Wildcard Permissions](./spec/wildcard.spec.js)
+-   [Property Filters](./spec/property-filter.spec.js)
+-   [Permission Arguments](./spec/permission-args.spec.js)
+
+### Advanced tips
+
+Property filters and Permission arguments are only for basic schema validation
+and property checking. For more complex schema enforcement or filtering, you
+should use a library like [Joi](https://joi.dev/) within your callback
+functions.
 
 ### Development
 
